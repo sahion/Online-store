@@ -3,6 +3,7 @@
 @import './components/styles/filters';
 @import './components/styles/buttons';
 @import './components/styles/selects';
+@import './components/styles/products';
 
 body {
   margin: 0;
@@ -12,4 +13,8 @@ body {
 
 .wrapper {
   margin: auto;
+}
+
+.products {
+  margin-top: 100px;
 }
