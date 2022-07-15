@@ -1,12 +1,15 @@
-@import "./components/styles/variables";
-@import "./components/styles/header";
-body{
+@import './components/styles/variables';
+@import './components/styles/header';
+@import './components/styles/filters';
+@import './components/styles/buttons';
+@import './components/styles/selects';
+
+body {
   margin: 0;
   background-color: $primary-color;
   font-family: monospace;
 }
 
-
-.wrapper{
+.wrapper {
   margin: auto;
 }

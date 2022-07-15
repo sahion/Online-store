@@ -18,34 +18,38 @@
       <section class="filters">
         <section class="filters__filter filter">
           <h2 class="filter__name">Фильтры по значению</h2>
-          <select name="filter__author" class="filter__author">
+          <select name="filter__author" class="filter__author select">
             <option value="Выберите автора">Выберите автора</option>
             <option value="Рэй Брэдбери">Рэй Брэдбери</option>
           </select>
-          <select name="filter__genre" class="filter__genre">
+          <select name="filter__genre" class="filter__genre select">
             <option value="Выберите Жанр">Выберите жанр</option>
             <option value="Проза">Проза</option>
           </select>
         </section>
         <section class="filters__filter filter">
           <h2 class="filter__name">Фильтры по диапазону</h2>
-          <div class="filter__year year">
+          <div class="filter__year year select-elements">
             <label class="year__label" for="year__value">Год выпуска:</label>
             <input type="range" min="1900" max="2022" name="year__value" id="year__value" />
+            <div class="year__current">1900</div>
           </div>
-          <div class="filter__count count">
+          <div class="filter__count count select-elements">
             <label class="count__label" for="count__value">Количество на складе:</label>
             <input type="range" min="0" max="20" name="count__value" id="count__value" />
+            <div class="count__current">5</div>
           </div>
         </section>
         <section class="filters__filter filter">
+          <h2 class="filter__name">Поиск и сортировка</h2>
           <input type="text" placeholder="Введите название книги" class="filter__search" />
           <div class="filter__sort sort">
             <label class="sort__label" for="sort__value">Выберите тип сортировки:</label>
-            <select name="sort__value" class="sort__value" id="sort__value">
+            <select name="sort__value" class="sort__value select" id="sort__value">
               <option value="СортировкаА">А</option>
             </select>
           </div>
+          <button class="btn filter__clear">Очистить фильтры</button>
         </section>
       </section>
       <section class="products">
