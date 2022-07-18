@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "css-loader": "^6.7.1",
+    "nouislider": "^15.6.0",
     "style-loader": "^3.3.1"
   }
 }

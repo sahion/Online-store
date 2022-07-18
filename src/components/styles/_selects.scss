@@ -11,4 +11,40 @@
 .select-elements {
   display: flex;
   gap: 5px;
+  align-items: center;
+}
+
+
+.year__value, .count__value{
+  width:100px;
+  margin: 0 20px;
+}
+
+.noUi-horizontal .noUi-handle{
+  background: $additional-color;
+  box-shadow: none;
+}
+.noUi-connect{
+  background: $additional-color-light;
+}
+.noUi-connects{
+  background: #ddd;
+}
+.noUi-horizontal {
+  height: 7px;
+  width: 100px;
+}
+.noUi-horizontal .noUi-handle {
+  width: 15px;
+  height: 15px;
+  right: -5px;
+  top: -5px;
+  border-radius: 50%;
+
+}
+
+.noUi-handle:before,
+.noUi-handle:after{
+  content: none;
+
 }

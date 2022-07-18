@@ -10,6 +10,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+
+  &__search {
+    border-color: $additional-color;
+    border-radius: 3px;
+    font-size: 1em;
+  }
+  
+
 }
 
 input[type='range'] {
@@ -33,8 +41,9 @@ input[type='range']::-webkit-slider-thumb {
   margin-top: -5px;
 }
 
-.filter__search {
-  border-color: $additional-color;
-  border-radius: 3px;
-  font-size: 1em;
+input[type='checkbox'] {
+  accent-color: $additional-color;
+  background-color:white;
 }
+
+

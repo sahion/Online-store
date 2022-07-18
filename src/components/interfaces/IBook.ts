@@ -7,6 +7,7 @@ interface IBook {
   year: number;
   image: string;
   quantity: number;
+  popular: boolean;
 }
 
 export default IBook;

@@ -26,17 +26,21 @@
             <option value="Выберите Жанр">Выберите жанр</option>
             <option value="Проза">Проза</option>
           </select>
+          <div class="filter__popular popluar">
+            <label for="popular__id" class="popular__label">Популярное:</label>
+            <input type="checkbox" id="popular__id">
+          </div>
         </section>
         <section class="filters__filter filter">
           <h2 class="filter__name">Фильтры по диапазону</h2>
           <div class="filter__year year select-elements">
             <label class="year__label" for="year__value">Год выпуска:</label>
-            <input type="range" min="1900" max="2022" name="year__value" id="year__value" />
+            <div class="year__value" name="year__value"></div>
             <div class="year__current">1900</div>
           </div>
           <div class="filter__count count select-elements">
             <label class="count__label" for="count__value">Количество на складе:</label>
-            <input type="range" min="0" max="20" name="count__value" id="count__value" />
+            <div class="count__value" name="count__value"></div>
             <div class="count__current">5</div>
           </div>
         </section>
@@ -61,6 +65,7 @@
           <div class="product__genre">Жанр</div>
           <div class="product__year">Год выпуска</div>
           <div class="product__pages">Количество страниц</div>
+          <div class="product__popular">Популярное</div>
         </div>
       </section>
       <footer class="footer">
