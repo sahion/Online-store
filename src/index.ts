@@ -1,10 +1,10 @@
 import data from './components/data/data';
 import getRange from './components/functions/getRange';
-import noUiSlider from '../node_modules/nouislider';
-import '../node_modules/nouislider/dist/nouislider.css'
+import * as noUiSlider from 'nouislider';
+import 'nouislider/dist/nouislider.css';
 import './global.scss';
 
-let yearSlider = document.querySelector('.year__value');
+let yearSlider = document.querySelector<noUiSlider.target>('.year__value');
 const year:{min:number,max:number} = getRange(data,'year');
 noUiSlider.create(yearSlider as HTMLElement,{
   start: [year.min, year.max],
@@ -15,10 +15,10 @@ noUiSlider.create(yearSlider as HTMLElement,{
   },
   step: 1
 });
-const yearValue = document.querySelector<HTMLElement>('.year__current') ;
+const yearValue = document.querySelector<HTMLElement>('.year__current');
 
 
-let countSlider = document.querySelector<HTMLElement>('.count__value');
+let countSlider = document.querySelector<noUiSlider.target>('.count__value');
 const count:{min:number,max:number} = getRange(data,'quantity');
 noUiSlider.create(countSlider as HTMLElement,{
   start: [count.min, count.max],
@@ -31,4 +31,12 @@ noUiSlider.create(countSlider as HTMLElement,{
 });
 const countValue = document.querySelector<HTMLElement>('.count__current');
 
+yearSlider?.noUiSlider?.on('update', (values) => {
+  if (yearValue != null)
+  yearValue.innerText = `${values[0]} - ${values[1]}`; 
+});
 
+countSlider?.noUiSlider?.on('update', (values) => {
+  if (countValue != null)
+  countValue.innerText = `${values[0]} - ${values[1]}`; 
+});
