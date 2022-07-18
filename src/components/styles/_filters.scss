@@ -16,8 +16,6 @@
     border-radius: 3px;
     font-size: 1em;
   }
-  
-
 }
 
 input[type='range'] {
@@ -43,7 +41,5 @@ input[type='range']::-webkit-slider-thumb {
 
 input[type='checkbox'] {
   accent-color: $additional-color;
-  background-color:white;
+  background-color: white;
 }
-
-
