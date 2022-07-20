@@ -1,14 +1,15 @@
 import createElement from './createElement';
 import removeFromCart from './removeFromCart';
 
-function addToCart(shoppingCart: string[], NameBlock: HTMLElement) {
+function addToCart(NameBlock: HTMLElement) {
+  const shoppingCart: string[] = JSON.parse(localStorage.getItem('shoppingCart') as string);
   if (shoppingCart.length >= 20) {
     alert('Извините все слоты заполнены');
     return;
   }
   const bookName: string = NameBlock.innerHTML;
   shoppingCart.push(bookName);
-
+  localStorage.setItem('shoppingCart', JSON.stringify(shoppingCart));
   const counterCart = document.querySelector<HTMLElement>('.shopping-cart__counter');
   if (counterCart) {
     counterCart.innerHTML = `${shoppingCart.length}`;
@@ -41,7 +42,7 @@ function addToCart(shoppingCart: string[], NameBlock: HTMLElement) {
       deleteBtn.addEventListener('click', () => {
         document.querySelector<HTMLElement>('.shopping-cart__counter');
         const counterCart = document.querySelector<HTMLElement>('.shopping-cart__counter');
-        if (counterCart) shoppingCart = removeFromCart(shoppingCart, productCounter, bookName, deleteBtn, counterCart);
+        if (counterCart) removeFromCart(productCounter, bookName, deleteBtn, counterCart);
       });
     }
   }

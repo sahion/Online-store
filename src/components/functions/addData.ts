@@ -1,8 +1,9 @@
 import IBook from '../interfaces/IBook';
 import addCartListener from './addToCartListener';
 import createElement from './createElement';
+import removeFromCart from './removeFromCart';
 
-function addData(data: IBook[], shoppingCart?: string[]): void {
+function addData(data: IBook[]): void {
   const products = document.querySelector<HTMLElement>('.products');
 
   if (products) {
@@ -70,24 +71,30 @@ function addData(data: IBook[], shoppingCart?: string[]): void {
         classList: ['btn', 'product__btn', 'product__add'],
         value: 'Добавить в корзину',
       });
-
+      const shoppingCart: string[] = JSON.parse(localStorage.getItem('shoppingCart') as string) as string[];
       if (shoppingCart && shoppingCart.length !== 0) {
         if (shoppingCart.includes(book.name)) {
-          createElement(product, {
+          const deleteBtn = createElement(product, {
             type: 'button',
             classList: ['btn', 'product__btn', 'btn_remove', 'product__remove'],
             value: 'Удалить из корзины',
           });
 
-          createElement(product, {
+          const productCounter = createElement(product, {
             type: 'div',
             classList: ['product__counter'],
             value: `${shoppingCart.filter((value) => value === book.name).length}`,
           });
+
+          deleteBtn.addEventListener('click', () => {
+            document.querySelector<HTMLElement>('.shopping-cart__counter');
+            const counterCart = document.querySelector<HTMLElement>('.shopping-cart__counter');
+            if (counterCart) removeFromCart(productCounter, book.name, deleteBtn, counterCart);
+          });
         }
       }
     });
-    if (shoppingCart) addCartListener(shoppingCart);
+    addCartListener();
   }
 }
 

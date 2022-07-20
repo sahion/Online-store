@@ -3,7 +3,7 @@ import data from '../data/data';
 import Genre from '../types/Genre';
 import addData from './addData';
 
-function changeFilters(shoppingCart: string[]): void {
+function changeFilters(): void {
   let currentData = data;
 
   const authorFilter = document.querySelector<HTMLSelectElement>('.filter__author');
@@ -67,7 +67,7 @@ function changeFilters(shoppingCart: string[]): void {
     }
   }
 
-  addData(currentData, shoppingCart);
+  addData(currentData);
 }
 
 export default changeFilters;
