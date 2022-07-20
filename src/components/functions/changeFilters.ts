@@ -36,6 +36,30 @@ function changeFilters(): void {
       book.year <= +(yearSlider?.noUiSlider?.get() as string[])[1]
   );
 
+  const searchInput = document.querySelector<HTMLInputElement>('.filter__search');
+  if (searchInput && searchInput.value) {
+    currentData = currentData.filter((value) => value.name.toLowerCase().includes(searchInput.value.toLowerCase()));
+  }
+
+  const sortSelector = document.querySelector<HTMLSelectElement>('.sort__value');
+  if (sortSelector && sortSelector.selectedIndex !== 0) {
+    switch (sortSelector?.options[sortSelector.selectedIndex].value) {
+      case 'Сортировка-название-возрастание':
+        currentData = currentData.sort((a, c) => (a.name >= c.name ? 1 : -1));
+        break;
+      case 'Сортировка-название-убывание':
+        currentData = currentData.sort((a, c) => (a.name >= c.name ? -1 : 1));
+        break;
+      case 'Сортировка-год-возрастание':
+        currentData = currentData.sort((a, c) => (a.year >= c.year ? 1 : -1));
+        break;
+      case 'Сортировка-год-убывание':
+        currentData = currentData.sort((a, c) => (a.year >= c.year ? -1 : 1));
+        break;
+      default:
+    }
+  }
+
   addData(currentData);
 }
 

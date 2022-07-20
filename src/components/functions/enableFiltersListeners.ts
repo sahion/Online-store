@@ -16,6 +16,11 @@ function enableFilters(): void {
 
   const quantitySlider = document.querySelector<noUiSlider.target>('.quantity__value');
   quantitySlider?.noUiSlider?.on('update', changeFilters);
-}
 
+  const searchInput = document.querySelector<HTMLInputElement>('.filter__search');
+  searchInput?.addEventListener('input', changeFilters);
+
+  const sortSelector = document.querySelector<HTMLSelectElement>('.sort__value');
+  sortSelector?.addEventListener('change', changeFilters);
+}
 export default enableFilters;

@@ -1,5 +1,4 @@
 import * as noUiSlider from 'nouislider';
-import IBook from '../interfaces/IBook';
 
 function addSliderListeners(slider: noUiSlider.target, valueField: HTMLElement) {
   slider?.noUiSlider?.on('update', (values) => {

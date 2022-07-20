@@ -8,7 +8,7 @@ import createSlider from './components/functions/createSlider';
 import addSliderListeners from './components/functions/addSliderListeners';
 import enableFilters from './components/functions/enableFiltersListeners';
 
-let currentData: IBook[] = data;
+const currentData: IBook[] = data;
 
 addData(data);
 setFilters();
