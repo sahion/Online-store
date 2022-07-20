@@ -1,7 +1,8 @@
 import IBook from '../interfaces/IBook';
+import addCartListener from './addToCartListener';
 import createElement from './createElement';
 
-function addData(data: IBook[]): void {
+function addData(data: IBook[], shoppingCart?: string[]): void {
   const products = document.querySelector<HTMLElement>('.products');
 
   if (products) {
@@ -64,7 +65,29 @@ function addData(data: IBook[]): void {
         classList: ['product__popular'],
         value: `${book.popular ? '' : 'Не '}Популярно`,
       });
+      createElement(product, {
+        type: 'button',
+        classList: ['btn', 'product__btn', 'product__add'],
+        value: 'Добавить в корзину',
+      });
+
+      if (shoppingCart && shoppingCart.length !== 0) {
+        if (shoppingCart.includes(book.name)) {
+          createElement(product, {
+            type: 'button',
+            classList: ['btn', 'product__btn', 'btn_remove', 'product__remove'],
+            value: 'Удалить из корзины',
+          });
+
+          createElement(product, {
+            type: 'div',
+            classList: ['product__counter'],
+            value: `${shoppingCart.filter((value) => value === book.name).length}`,
+          });
+        }
+      }
     });
+    if (shoppingCart) addCartListener(shoppingCart);
   }
 }
 

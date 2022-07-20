@@ -3,7 +3,7 @@ import data from '../data/data';
 import Genre from '../types/Genre';
 import addData from './addData';
 
-function changeFilters(): void {
+function changeFilters(shoppingCart: string[]): void {
   let currentData = data;
 
   const authorFilter = document.querySelector<HTMLSelectElement>('.filter__author');
@@ -36,6 +36,13 @@ function changeFilters(): void {
       book.year <= +(yearSlider?.noUiSlider?.get() as string[])[1]
   );
 
+  const quantitySlider = document.querySelector<noUiSlider.target>('.quantity__value');
+  currentData = currentData.filter(
+    (book) =>
+      book.quantity >= +(quantitySlider?.noUiSlider?.get() as string[])[0] &&
+      book.quantity <= +(quantitySlider?.noUiSlider?.get() as string[])[1]
+  );
+
   const searchInput = document.querySelector<HTMLInputElement>('.filter__search');
   if (searchInput && searchInput.value) {
     currentData = currentData.filter((value) => value.name.toLowerCase().includes(searchInput.value.toLowerCase()));
@@ -60,7 +67,7 @@ function changeFilters(): void {
     }
   }
 
-  addData(currentData);
+  addData(currentData, shoppingCart);
 }
 
 export default changeFilters;

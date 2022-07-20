@@ -13,7 +13,9 @@
           <div class="logo__image" alt="logo"></div>
           <h1 class="logo__name">Online Store</h1>
         </div>
-        <div class="header__shopping-cart shopping-cart"></div>
+        <div class="header__shopping-cart shopping-cart">
+          <div class="shopping-cart__image"></div>
+        </div>
       </header>
       <section class="filters">
         <section class="filters__filter filter">
@@ -44,7 +46,7 @@
         </section>
         <section class="filters__filter filter">
           <h2 class="filter__name">Поиск и сортировка</h2>
-          <input type="text" placeholder="Введите название книги" class="filter__search" />
+          <input type="text" placeholder="Введите название книги" class="filter__search" autocomplete="off" autofocus />
           <div class="filter__sort sort">
             <label class="sort__label" for="sort__value">Выберите тип сортировки:</label>
             <select name="sort__value" class="sort__value select" id="sort__value">
@@ -52,7 +54,7 @@
               <option value="Сортировка-название-возрастание">Сортировка по названию по возрастанию</option>
               <option value="Сортировка-название-убывание">Сортировка по названию по убыванию</option>
               <option value="Сортировка-год-возрастание">Сортировка по году по возрастанию</option>
-              <option value="Сортировка-название-убывание">Сортировка по году по убыванию</option>
+              <option value="Сортировка-год-убывание">Сортировка по году по убыванию</option>
             </select>
           </div>
           <button class="btn filter__clear">Очистить фильтры</button>
