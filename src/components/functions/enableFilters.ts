@@ -1,5 +1,6 @@
 import * as noUiSlider from 'nouislider';
 import changeFilters from './changeFilters';
+import removeFilters from './removeFilters';
 
 function enableFilters(): void {
   const authorFilter = document.querySelector<HTMLSelectElement>('.filter__author');
@@ -22,5 +23,8 @@ function enableFilters(): void {
 
   const sortSelector = document.querySelector<HTMLSelectElement>('.sort__value');
   sortSelector?.addEventListener('change', changeFilters);
+
+  const filterClearBtn = document.querySelector<HTMLButtonElement>('.filter__clear');
+  filterClearBtn?.addEventListener('click', removeFilters);
 }
 export default enableFilters;

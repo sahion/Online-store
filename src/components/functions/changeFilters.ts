@@ -12,6 +12,9 @@ function changeFilters(): void {
       currentData = currentData.filter(
         (value) => value.author === authorFilter?.options[authorFilter.selectedIndex].value
       );
+      localStorage.setItem('author', authorFilter?.options[authorFilter.selectedIndex].value);
+    } else {
+      localStorage.removeItem('author');
     }
   }
 
@@ -21,12 +24,18 @@ function changeFilters(): void {
       currentData = currentData.filter((value) =>
         value.genre.includes(genreFilter?.options[genreFilter.selectedIndex].value as Genre)
       );
+      localStorage.setItem('genre', genreFilter?.options[genreFilter.selectedIndex].value);
+    } else {
+      localStorage.removeItem('genre');
     }
   }
 
   const popularCheckbox = document.querySelector<HTMLInputElement>('#popular__id');
   if (popularCheckbox?.checked) {
     currentData = currentData.filter((value) => value.popular);
+    localStorage.setItem('popular', 'true');
+  } else {
+    localStorage.removeItem('popular');
   }
 
   const yearSlider = document.querySelector<noUiSlider.target>('.year__value');
@@ -35,6 +44,8 @@ function changeFilters(): void {
       book.year >= +(yearSlider?.noUiSlider?.get() as string[])[0] &&
       book.year <= +(yearSlider?.noUiSlider?.get() as string[])[1]
   );
+  localStorage.setItem('minYear', (yearSlider?.noUiSlider?.get() as string[])[0]);
+  localStorage.setItem('maxYear', (yearSlider?.noUiSlider?.get() as string[])[1]);
 
   const quantitySlider = document.querySelector<noUiSlider.target>('.quantity__value');
   currentData = currentData.filter(
@@ -42,14 +53,20 @@ function changeFilters(): void {
       book.quantity >= +(quantitySlider?.noUiSlider?.get() as string[])[0] &&
       book.quantity <= +(quantitySlider?.noUiSlider?.get() as string[])[1]
   );
+  localStorage.setItem('minQuantity', (quantitySlider?.noUiSlider?.get() as string[])[0]);
+  localStorage.setItem('maxQuantity', (quantitySlider?.noUiSlider?.get() as string[])[1]);
 
   const searchInput = document.querySelector<HTMLInputElement>('.filter__search');
   if (searchInput && searchInput.value) {
     currentData = currentData.filter((value) => value.name.toLowerCase().includes(searchInput.value.toLowerCase()));
+    localStorage.setItem('search', searchInput.value);
+  } else {
+    localStorage.removeItem('search');
   }
 
   const sortSelector = document.querySelector<HTMLSelectElement>('.sort__value');
   if (sortSelector && sortSelector.selectedIndex !== 0) {
+    localStorage.setItem('sort', sortSelector?.options[sortSelector.selectedIndex].value);
     switch (sortSelector?.options[sortSelector.selectedIndex].value) {
       case 'Сортировка-название-возрастание':
         currentData = currentData.sort((a, c) => (a.name >= c.name ? 1 : -1));
@@ -65,6 +82,8 @@ function changeFilters(): void {
         break;
       default:
     }
+  } else {
+    localStorage.removeItem('sort');
   }
 
   addData(currentData);

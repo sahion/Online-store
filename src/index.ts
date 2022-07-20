@@ -7,9 +7,8 @@ import IBook from './components/interfaces/IBook';
 import createSlider from './components/functions/createSlider';
 import addSliderListeners from './components/functions/addSliderListeners';
 import enableFilters from './components/functions/enableFilters';
-import addToCart from './components/functions/addToCart';
-import addCartListener from './components/functions/addToCartListener';
 import createElement from './components/functions/createElement';
+import loadFilters from './components/functions/loadFilters';
 
 const currentData: IBook[] = data;
 if (!JSON.parse(localStorage.getItem('shoppingCart') as string)) {
@@ -20,18 +19,20 @@ addData(data);
 setFilters();
 const [yearSlider, yearValue] = createSlider(currentData, 'year');
 const [quantitySlider, quantityValue] = createSlider(currentData, 'quantity');
+loadFilters();
 addSliderListeners(yearSlider, yearValue);
 addSliderListeners(quantitySlider, quantityValue);
 enableFilters();
 
 const counterCart = document.querySelector<HTMLElement>('.shopping-cart__counter');
+
+const shoppingCart: string[] = JSON.parse(localStorage.getItem('shoppingCart') as string);
 if (counterCart) {
-  const shoppingCart: string[] = JSON.parse(localStorage.getItem('shoppingCart') as string);
   counterCart.innerHTML = `${shoppingCart.length}`;
-} else {
-  const shopCart = document.querySelector<HTMLElement>('.shopping-cart');
-  if (shopCart)
-    createElement(shopCart, {
+} else if (shoppingCart.length !== 0) {
+  const shoppingCartBlock = document.querySelector<HTMLElement>('.shopping-cart');
+  if (shoppingCartBlock)
+    createElement(shoppingCartBlock, {
       type: 'div',
       classList: ['shopping-cart__counter'],
       value: `${JSON.parse(localStorage.getItem('shoppingCart') as string).length}`,

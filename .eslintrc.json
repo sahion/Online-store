@@ -11,6 +11,8 @@
   },
   "plugins": ["@typescript-eslint", "prettier"],
   "rules": {
-    "@typescript-eslint/no-explicit-any": "error"
+    "@typescript-eslint/no-explicit-any": "error",
+    "no-param-reassign": 0,
+    "no-alert": 0
   }
 }

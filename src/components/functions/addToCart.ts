@@ -41,7 +41,6 @@ function addToCart(NameBlock: HTMLElement) {
       });
       deleteBtn.addEventListener('click', () => {
         document.querySelector<HTMLElement>('.shopping-cart__counter');
-        const counterCart = document.querySelector<HTMLElement>('.shopping-cart__counter');
         if (counterCart) removeFromCart(productCounter, bookName, deleteBtn, counterCart);
       });
     }
