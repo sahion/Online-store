@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online Store</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <div class="header__logo logo">
+          <div class="logo__image" alt="logo"></div>
+          <h1 class="logo__name">Online Store</h1>
+        </div>
+        <div class="header__shopping-cart shopping-cart">
+          <div class="shopping-cart__image"></div>
+        </div>
+      </header>
+      <section class="filters">
+        <section class="filters__filter filter">
+          <h2 class="filter__name">Фильтры по значению</h2>
+          <select name="filter__author" class="filter__author select">
+            <option value="Выберите автора">Выберите автора</option>
+          </select>
+          <select name="filter__genre" class="filter__genre select">
+            <option value="Выберите Жанр">Выберите жанр</option>
+          </select>
+          <div class="filter__popular popluar">
+            <label for="popular__id" class="popular__label">Популярное:</label>
+            <input type="checkbox" id="popular__id" />
+          </div>
+        </section>
+        <section class="filters__filter filter">
+          <h2 class="filter__name">Фильтры по диапазону</h2>
+          <div class="filter__year year select-elements">
+            <label class="year__label" for="year__value">Год выпуска:</label>
+            <div class="year__value" name="year__value"></div>
+            <div class="year__current">1900</div>
+          </div>
+          <div class="filter__quantity quantity select-elements">
+            <label class="quantity__label" for="quantity__value">Количество на складе:</label>
+            <div class="quantity__value" name="quantity__value"></div>
+            <div class="quantity__current">5</div>
+          </div>
+        </section>
+        <section class="filters__filter filter">
+          <h2 class="filter__name">Поиск и сортировка</h2>
+          <input type="text" placeholder="Введите название книги" class="filter__search" autocomplete="off" autofocus />
+          <div class="filter__sort sort">
+            <label class="sort__label" for="sort__value">Выберите тип сортировки:</label>
+            <select name="sort__value" class="sort__value select" id="sort__value">
+              <option value="Сортировка-отсутствует">Без сортировки</option>
+              <option value="Сортировка-название-возрастание">Сортировка по названию по возрастанию</option>
+              <option value="Сортировка-название-убывание">Сортировка по названию по убыванию</option>
+              <option value="Сортировка-год-возрастание">Сортировка по году по возрастанию</option>
+              <option value="Сортировка-год-убывание">Сортировка по году по убыванию</option>
+            </select>
+          </div>
+          <button class="btn filter__clear">Очистить фильтры</button>
+        </section>
+      </section>
+      <section class="products">
+        <div class="products__product product">
+          <img src="#" alt="Изображение книги" class="product__image" />
+          <h3 class="product__name">Название</h3>
+          <div class="product__quantity">Количество</div>
+          <div class="product__author">Автор</div>
+          <div class="product__genre">Жанр</div>
+          <div class="product__year">Год выпуска</div>
+          <div class="product__pages">Количество страниц</div>
+          <div class="product__popular">Популярное</div>
+        </div>
+      </section>
+      <footer class="footer">
+        <div class="footer__author author"><a href="https://github.com/sahion" class="author__link">sahion</a></div>
+        <div class="footer__year">2022</div>
+        <a href="https://rs.school/" class="footer__rs-school rs-school"></a>
+      </footer>
+    </div>
+  </body>
+</html>
