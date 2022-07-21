@@ -10,7 +10,7 @@ function addToCart(NameBlock: HTMLElement) {
   const bookName: string = NameBlock.innerHTML;
   shoppingCart.push(bookName);
   localStorage.setItem('shoppingCart', JSON.stringify(shoppingCart));
-  const counterCart = document.querySelector<HTMLElement>('.shopping-cart__counter');
+  let counterCart = document.querySelector<HTMLElement>('.shopping-cart__counter');
   if (counterCart) {
     counterCart.innerHTML = `${shoppingCart.length}`;
   } else {
@@ -40,7 +40,7 @@ function addToCart(NameBlock: HTMLElement) {
         value: 'Удалить из корзины',
       });
       deleteBtn.addEventListener('click', () => {
-        document.querySelector<HTMLElement>('.shopping-cart__counter');
+        counterCart = document.querySelector<HTMLElement>('.shopping-cart__counter');
         if (counterCart) removeFromCart(productCounter, bookName, deleteBtn, counterCart);
       });
     }

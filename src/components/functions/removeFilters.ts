@@ -1,6 +1,7 @@
 import * as noUiSlider from 'nouislider';
 import data from '../data/data';
 import addData from './addData';
+import sortData from './sortData';
 
 function removeFilters(): void {
   localStorage.removeItem('author');
@@ -40,6 +41,7 @@ function removeFilters(): void {
   const searchField = document.querySelector<HTMLInputElement>('.filter__search');
   if (searchField) searchField.value = '';
 
-  addData(data);
+  const currentData = sortData(data);
+  addData(currentData);
 }
 export default removeFilters;

@@ -2,6 +2,7 @@ import * as noUiSlider from 'nouislider';
 import data from '../data/data';
 import Genre from '../types/Genre';
 import addData from './addData';
+import sortData from './sortData';
 
 function changeFilters(): void {
   let currentData = data;
@@ -64,27 +65,7 @@ function changeFilters(): void {
     localStorage.removeItem('search');
   }
 
-  const sortSelector = document.querySelector<HTMLSelectElement>('.sort__value');
-  if (sortSelector && sortSelector.selectedIndex !== 0) {
-    localStorage.setItem('sort', sortSelector?.options[sortSelector.selectedIndex].value);
-    switch (sortSelector?.options[sortSelector.selectedIndex].value) {
-      case 'Сортировка-название-возрастание':
-        currentData = currentData.sort((a, c) => (a.name >= c.name ? 1 : -1));
-        break;
-      case 'Сортировка-название-убывание':
-        currentData = currentData.sort((a, c) => (a.name >= c.name ? -1 : 1));
-        break;
-      case 'Сортировка-год-возрастание':
-        currentData = currentData.sort((a, c) => (a.year >= c.year ? 1 : -1));
-        break;
-      case 'Сортировка-год-убывание':
-        currentData = currentData.sort((a, c) => (a.year >= c.year ? -1 : 1));
-        break;
-      default:
-    }
-  } else {
-    localStorage.removeItem('sort');
-  }
+  currentData = sortData(currentData);
 
   addData(currentData);
 }
