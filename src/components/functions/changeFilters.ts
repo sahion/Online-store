@@ -2,6 +2,7 @@ import * as noUiSlider from 'nouislider';
 import data from '../data/data';
 import Genre from '../types/Genre';
 import addData from './addData';
+import getSliderValues from './getSliderValues';
 import sortData from './sortData';
 
 function changeFilters(): void {
@@ -33,30 +34,26 @@ function changeFilters(): void {
 
   const popularCheckbox = document.querySelector<HTMLInputElement>('#popular__id');
   if (popularCheckbox?.checked) {
-    currentData = currentData.filter((value) => value.popular);
+    currentData = currentData.filter((value) => value.isPopular);
     localStorage.setItem('popular', 'true');
   } else {
     localStorage.removeItem('popular');
   }
 
   const yearSlider = document.querySelector<noUiSlider.target>('.year__value');
-  currentData = currentData.filter(
-    (book) =>
-      book.year >= +(yearSlider?.noUiSlider?.get() as string[])[0] &&
-      book.year <= +(yearSlider?.noUiSlider?.get() as string[])[1]
-  );
-  localStorage.setItem('minYear', (yearSlider?.noUiSlider?.get() as string[])[0]);
-  localStorage.setItem('maxYear', (yearSlider?.noUiSlider?.get() as string[])[1]);
-
+  if (yearSlider) {
+    const [yearStart, yearFinish] = getSliderValues(yearSlider);
+    currentData = currentData.filter((book) => book.year >= yearStart && book.year <= yearFinish);
+    localStorage.setItem('minYear', yearStart.toString());
+    localStorage.setItem('maxYear', yearFinish.toString());
+  }
   const quantitySlider = document.querySelector<noUiSlider.target>('.quantity__value');
-  currentData = currentData.filter(
-    (book) =>
-      book.quantity >= +(quantitySlider?.noUiSlider?.get() as string[])[0] &&
-      book.quantity <= +(quantitySlider?.noUiSlider?.get() as string[])[1]
-  );
-  localStorage.setItem('minQuantity', (quantitySlider?.noUiSlider?.get() as string[])[0]);
-  localStorage.setItem('maxQuantity', (quantitySlider?.noUiSlider?.get() as string[])[1]);
-
+  if (quantitySlider) {
+    const [quantityStart, quantityFinish] = getSliderValues(quantitySlider);
+    currentData = currentData.filter((book) => book.quantity >= quantityStart && book.quantity <= quantityFinish);
+    localStorage.setItem('minQuantity', quantityStart.toString());
+    localStorage.setItem('maxQuantity', quantityFinish.toString());
+  }
   const searchInput = document.querySelector<HTMLInputElement>('.filter__search');
   if (searchInput && searchInput.value) {
     currentData = currentData.filter((value) => value.name.toLowerCase().includes(searchInput.value.toLowerCase()));

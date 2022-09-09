@@ -3,10 +3,9 @@ import addToCart from './addToCart';
 function addCartListener(): void {
   document.querySelectorAll<HTMLElement>('.product__add').forEach((btn) => {
     btn.addEventListener('click', (event) => {
-      if (event && event.target && (event.target as HTMLElement).parentElement) {
-        const parent = (event.target as HTMLElement).parentElement as HTMLElement;
-        if (parent.querySelector('.product__name')) addToCart(parent.querySelector('.product__name') as HTMLElement);
-      }
+      const parent = <HTMLElement>(event.target as HTMLElement)?.parentElement;
+      const productName = <HTMLElement>parent.querySelector('.product__name');
+      if (productName) addToCart(productName);
     });
   });
 }

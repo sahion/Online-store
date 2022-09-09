@@ -8,7 +8,7 @@ const data: IBook[] = [
     year: 1949,
     image: './img/1984-George-Orwell.png',
     quantity: 10,
-    popular: true,
+    isPopular: true,
   },
   {
     name: 'Три товарища',
@@ -17,7 +17,7 @@ const data: IBook[] = [
     year: 1936,
     image: './img/Erih_Mariya_Remark__Tri_tovarischa.jpeg',
     quantity: 5,
-    popular: true,
+    isPopular: true,
   },
   {
     name: 'Великий Гэтсби',
@@ -26,7 +26,7 @@ const data: IBook[] = [
     year: 1925,
     image: './img/frensis-skott-ficdzherald-velikiy-getsbi.jpg',
     quantity: 20,
-    popular: false,
+    isPopular: false,
   },
   {
     name: 'Гарри Поттер и философский камень',
@@ -35,7 +35,7 @@ const data: IBook[] = [
     year: 1997,
     image: './img/harry-potter-philosopher-stone.jpg',
     quantity: 1,
-    popular: false,
+    isPopular: false,
   },
   {
     name: 'Бойцовский клуб',
@@ -44,7 +44,7 @@ const data: IBook[] = [
     year: 1996,
     image: './img/fight-club-chak-palanik.jpg',
     quantity: 1,
-    popular: false,
+    isPopular: false,
   },
 ];
 

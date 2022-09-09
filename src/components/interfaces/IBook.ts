@@ -7,7 +7,7 @@ interface IBook {
   year: number;
   image: string;
   quantity: number;
-  popular: boolean;
+  isPopular: boolean;
 }
 
 export default IBook;

@@ -1,8 +1,9 @@
 import * as noUiSlider from 'nouislider';
+import getFixedValue from './getFixedValue';
 
 function addSliderListeners(slider: noUiSlider.target, valueField: HTMLElement) {
-  slider?.noUiSlider?.on('update', (values) => {
-    if (valueField) valueField.innerText = `${(+values[0]).toFixed()} - ${(+values[1]).toFixed()}`;
+  slider?.noUiSlider?.on('update', ([startValue, finishValue]) => {
+    if (valueField) valueField.innerText = `${getFixedValue(startValue)} - ${getFixedValue(finishValue)}`;
   });
 }
 

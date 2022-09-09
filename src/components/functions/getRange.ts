@@ -1,6 +1,7 @@
 import IBook from '../interfaces/IBook';
+import ISliderRange from '../interfaces/ISliderRange';
 
-function getRange(data: IBook[], parameter: keyof IBook): { min: number; max: number } {
+function getRange(data: IBook[], parameter: keyof IBook): ISliderRange {
   let min = 9999;
   let max = 0;
   data.forEach((value) => {

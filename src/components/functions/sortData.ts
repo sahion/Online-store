@@ -2,7 +2,7 @@ import IBook from '../interfaces/IBook';
 
 function sortData(currentData: IBook[]): IBook[] {
   const sortSelector = document.querySelector<HTMLSelectElement>('.sort__value');
-  if (sortSelector && sortSelector.selectedIndex !== 0) {
+  if (sortSelector?.selectedIndex) {
     localStorage.setItem('sort', sortSelector?.options[sortSelector.selectedIndex].value);
     switch (sortSelector?.options[sortSelector.selectedIndex].value) {
       case 'Сортировка-название-возрастание':

@@ -1,12 +1,14 @@
+import { CART_LIMIT } from '../constants/constants';
 import createElement from './createElement';
 import removeFromCart from './removeFromCart';
 
 function addToCart(NameBlock: HTMLElement) {
   const shoppingCart: string[] = JSON.parse(localStorage.getItem('shoppingCart') as string);
-  if (shoppingCart.length >= 20) {
+  if (shoppingCart.length >= CART_LIMIT) {
     alert('Извините все слоты заполнены');
     return;
   }
+
   const bookName: string = NameBlock.innerHTML;
   shoppingCart.push(bookName);
   localStorage.setItem('shoppingCart', JSON.stringify(shoppingCart));
