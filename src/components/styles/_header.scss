@@ -1,0 +1,55 @@
+.header {
+  background-color: $additional-color;
+  color: $primary-color;
+  display: flex;
+  justify-content: space-around;
+}
+
+.header__logo {
+  display: flex;
+}
+
+.logo {
+  gap: 10px;
+}
+
+.logo__image {
+  mask: url('./components/img/logo-image.svg') no-repeat 50% 50%;
+  -webkit-mask: url('./components/img/logo-image.svg') no-repeat 50% 50%;
+  mask-size: 75px;
+  -webkit-mask-size: 75px;
+  background-color: $primary-color;
+  color: white;
+  width: 100px;
+}
+
+.shopping-cart {
+  width: 100px;
+  position: relative;
+
+  &__image {
+    mask: url('./components/img/shopping-cart.svg') no-repeat 50% 50%;
+    -webkit-mask: url('./components/img/shopping-cart.svg') no-repeat 50% 50%;
+    mask-size: 50px;
+    -webkit-mask-size: 50px;
+    background-color: $primary-color;
+    color: $primary-color;
+    height: 100%;
+  }
+
+  &__counter {
+    background-color: $active-color;
+    border-radius: 50%;
+    width: 23px;
+    height: 23px;
+    position: absolute;
+    top: 0px;
+    right: 20px;
+    font-weight: bold;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid $additional-color;
+  }
+}

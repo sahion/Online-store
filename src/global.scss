@@ -1,0 +1,30 @@
+@import './components/styles/variables';
+@import './components/styles/header';
+@import './components/styles/filters';
+@import './components/styles/buttons';
+@import './components/styles/selects';
+@import './components/styles/products';
+@import './components/styles/footer';
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: $primary-color;
+  font-family: monospace;
+  min-height: 100%;
+}
+
+.wrapper {
+  min-height: 100vh;
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  overflow: hidden;
+}
+
+.footer {
+  margin-top: auto;
+}
